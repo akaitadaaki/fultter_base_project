@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'test_state.dart';
 
@@ -12,23 +12,7 @@ part of 'test_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$TestStateTearOff {
-  const _$TestStateTearOff();
-
-  _TestState call(
-      {required String inputName, required String inputDescription}) {
-    return _TestState(
-      inputName: inputName,
-      inputDescription: inputDescription,
-    );
-  }
-}
-
-/// @nodoc
-const $TestState = _$TestStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$TestState {
@@ -43,65 +27,70 @@ mixin _$TestState {
 /// @nodoc
 abstract class $TestStateCopyWith<$Res> {
   factory $TestStateCopyWith(TestState value, $Res Function(TestState) then) =
-      _$TestStateCopyWithImpl<$Res>;
+      _$TestStateCopyWithImpl<$Res, TestState>;
+  @useResult
   $Res call({String inputName, String inputDescription});
 }
 
 /// @nodoc
-class _$TestStateCopyWithImpl<$Res> implements $TestStateCopyWith<$Res> {
+class _$TestStateCopyWithImpl<$Res, $Val extends TestState>
+    implements $TestStateCopyWith<$Res> {
   _$TestStateCopyWithImpl(this._value, this._then);
 
-  final TestState _value;
   // ignore: unused_field
-  final $Res Function(TestState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? inputName = freezed,
-    Object? inputDescription = freezed,
+    Object? inputName = null,
+    Object? inputDescription = null,
   }) {
     return _then(_value.copyWith(
-      inputName: inputName == freezed
+      inputName: null == inputName
           ? _value.inputName
           : inputName // ignore: cast_nullable_to_non_nullable
               as String,
-      inputDescription: inputDescription == freezed
+      inputDescription: null == inputDescription
           ? _value.inputDescription
           : inputDescription // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$TestStateCopyWith<$Res> implements $TestStateCopyWith<$Res> {
-  factory _$TestStateCopyWith(
-          _TestState value, $Res Function(_TestState) then) =
-      __$TestStateCopyWithImpl<$Res>;
+abstract class _$$_TestStateCopyWith<$Res> implements $TestStateCopyWith<$Res> {
+  factory _$$_TestStateCopyWith(
+          _$_TestState value, $Res Function(_$_TestState) then) =
+      __$$_TestStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String inputName, String inputDescription});
 }
 
 /// @nodoc
-class __$TestStateCopyWithImpl<$Res> extends _$TestStateCopyWithImpl<$Res>
-    implements _$TestStateCopyWith<$Res> {
-  __$TestStateCopyWithImpl(_TestState _value, $Res Function(_TestState) _then)
-      : super(_value, (v) => _then(v as _TestState));
+class __$$_TestStateCopyWithImpl<$Res>
+    extends _$TestStateCopyWithImpl<$Res, _$_TestState>
+    implements _$$_TestStateCopyWith<$Res> {
+  __$$_TestStateCopyWithImpl(
+      _$_TestState _value, $Res Function(_$_TestState) _then)
+      : super(_value, _then);
 
-  @override
-  _TestState get _value => super._value as _TestState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? inputName = freezed,
-    Object? inputDescription = freezed,
+    Object? inputName = null,
+    Object? inputDescription = null,
   }) {
-    return _then(_TestState(
-      inputName: inputName == freezed
+    return _then(_$_TestState(
+      inputName: null == inputName
           ? _value.inputName
           : inputName // ignore: cast_nullable_to_non_nullable
               as String,
-      inputDescription: inputDescription == freezed
+      inputDescription: null == inputDescription
           ? _value.inputDescription
           : inputDescription // ignore: cast_nullable_to_non_nullable
               as String,
@@ -128,28 +117,27 @@ class _$_TestState implements _TestState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TestState &&
-            const DeepCollectionEquality().equals(other.inputName, inputName) &&
-            const DeepCollectionEquality()
-                .equals(other.inputDescription, inputDescription));
+            other is _$_TestState &&
+            (identical(other.inputName, inputName) ||
+                other.inputName == inputName) &&
+            (identical(other.inputDescription, inputDescription) ||
+                other.inputDescription == inputDescription));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(inputName),
-      const DeepCollectionEquality().hash(inputDescription));
+  int get hashCode => Object.hash(runtimeType, inputName, inputDescription);
 
   @JsonKey(ignore: true)
   @override
-  _$TestStateCopyWith<_TestState> get copyWith =>
-      __$TestStateCopyWithImpl<_TestState>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_TestStateCopyWith<_$_TestState> get copyWith =>
+      __$$_TestStateCopyWithImpl<_$_TestState>(this, _$identity);
 }
 
 abstract class _TestState implements TestState {
   factory _TestState(
-      {required String inputName,
-      required String inputDescription}) = _$_TestState;
+      {required final String inputName,
+      required final String inputDescription}) = _$_TestState;
 
   @override
   String get inputName;
@@ -157,6 +145,6 @@ abstract class _TestState implements TestState {
   String get inputDescription;
   @override
   @JsonKey(ignore: true)
-  _$TestStateCopyWith<_TestState> get copyWith =>
+  _$$_TestStateCopyWith<_$_TestState> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -10,10 +10,12 @@ _$_TestData _$$_TestDataFromJson(Map<String, dynamic> json) => _$_TestData(
       id: json['dataId'] as int,
       name: json['dataName'] as String,
       description: json['description'] as String,
-      lastUpdate: const DateTimeConverter().fromJson(json['lastUpdate'] as String),
+      lastUpdate:
+          const DateTimeConverter().fromJson(json['lastUpdate'] as String),
     );
 
-Map<String, dynamic> _$$_TestDataToJson(_$_TestData instance) => <String, dynamic>{
+Map<String, dynamic> _$$_TestDataToJson(_$_TestData instance) =>
+    <String, dynamic>{
       'dataId': instance.id,
       'dataName': instance.name,
       'description': instance.description,
