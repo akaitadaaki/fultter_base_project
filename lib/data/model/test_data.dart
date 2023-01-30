@@ -7,7 +7,7 @@ part 'test_data.freezed.dart';
 part 'test_data.g.dart';
 
 @freezed
-abstract class TestData with _$TestData {
+class TestData with _$TestData {
   factory TestData({
     @JsonKey(name: 'dataId') required int id,
     @JsonKey(name: 'dataName') required String name,

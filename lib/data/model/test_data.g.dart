@@ -1,4 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'test_data.dart';
@@ -6,6 +5,7 @@ part of 'test_data.dart';
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
+
 _$_TestData _$$_TestDataFromJson(Map<String, dynamic> json) => _$_TestData(
       id: json['dataId'] as int,
       name: json['dataName'] as String,
