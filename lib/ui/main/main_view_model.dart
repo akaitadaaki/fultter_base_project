@@ -9,7 +9,8 @@ final testDataProvider =
     FutureProvider<List<TestData>>((ref) async => ref.read(testDataRepositoryProvider).getTestDataList());
 
 class MainViewModel extends StateNotifier<MainState> {
-  MainViewModel(this._ref) : super(MainState(inputName: "", inputDescription: ""));
+  MainViewModel(this._ref)
+      : super(MainState(inputName: "", inputDescription: "", testList: _ref.watch(testDataProvider)));
 
   final Ref _ref;
 
@@ -23,7 +24,7 @@ class MainViewModel extends StateNotifier<MainState> {
       int lastId = await _testDataRepository.getLastId();
       _testDataRepository.saveTestData(TestData(
           id: ++lastId, name: state.inputName, description: state.inputDescription, lastUpdate: DateTime.now()));
-      state = MainState(inputName: "", inputDescription: "");
+      state = state.copyWith(inputName: "", inputDescription: "");
     }
   }
 }

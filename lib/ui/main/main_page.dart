@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/model/test_data.dart';
 import '../theme/app_theme.dart';
 import 'main_view_model.dart';
 
@@ -19,9 +18,8 @@ class MainPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(appThemeProvider);
 
-    // final testState = ref.watch(mainViewModelProvider);
+    final mainState = ref.watch(mainViewModelProvider);
 
-    AsyncValue<List<TestData>> testDataValue = ref.watch(testDataProvider);
     FlutterNativeSplash.remove();
 
     return Scaffold(
@@ -73,7 +71,7 @@ class MainPage extends HookConsumerWidget {
             thickness: 1,
             height: 0,
           ),
-          testDataValue.when(
+          mainState.testList.when(
               loading: () => const Center(
                     child: CircularProgressIndicator(),
                   ),

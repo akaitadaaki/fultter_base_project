@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MainState {
   String get inputName => throw _privateConstructorUsedError;
   String get inputDescription => throw _privateConstructorUsedError;
+  AsyncValue<List<TestData>> get testList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MainStateCopyWith<MainState> get copyWith =>
@@ -29,7 +30,10 @@ abstract class $MainStateCopyWith<$Res> {
   factory $MainStateCopyWith(MainState value, $Res Function(MainState) then) =
       _$MainStateCopyWithImpl<$Res, MainState>;
   @useResult
-  $Res call({String inputName, String inputDescription});
+  $Res call(
+      {String inputName,
+      String inputDescription,
+      AsyncValue<List<TestData>> testList});
 }
 
 /// @nodoc
@@ -47,6 +51,7 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
   $Res call({
     Object? inputName = null,
     Object? inputDescription = null,
+    Object? testList = null,
   }) {
     return _then(_value.copyWith(
       inputName: null == inputName
@@ -57,6 +62,10 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
           ? _value.inputDescription
           : inputDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      testList: null == testList
+          ? _value.testList
+          : testList // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<TestData>>,
     ) as $Val);
   }
 }
@@ -68,7 +77,10 @@ abstract class _$$_MainStateCopyWith<$Res> implements $MainStateCopyWith<$Res> {
       __$$_MainStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String inputName, String inputDescription});
+  $Res call(
+      {String inputName,
+      String inputDescription,
+      AsyncValue<List<TestData>> testList});
 }
 
 /// @nodoc
@@ -84,6 +96,7 @@ class __$$_MainStateCopyWithImpl<$Res>
   $Res call({
     Object? inputName = null,
     Object? inputDescription = null,
+    Object? testList = null,
   }) {
     return _then(_$_MainState(
       inputName: null == inputName
@@ -94,6 +107,10 @@ class __$$_MainStateCopyWithImpl<$Res>
           ? _value.inputDescription
           : inputDescription // ignore: cast_nullable_to_non_nullable
               as String,
+      testList: null == testList
+          ? _value.testList
+          : testList // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<TestData>>,
     ));
   }
 }
@@ -101,16 +118,21 @@ class __$$_MainStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MainState implements _MainState {
-  _$_MainState({required this.inputName, required this.inputDescription});
+  _$_MainState(
+      {required this.inputName,
+      required this.inputDescription,
+      required this.testList});
 
   @override
   final String inputName;
   @override
   final String inputDescription;
+  @override
+  final AsyncValue<List<TestData>> testList;
 
   @override
   String toString() {
-    return 'MainState(inputName: $inputName, inputDescription: $inputDescription)';
+    return 'MainState(inputName: $inputName, inputDescription: $inputDescription, testList: $testList)';
   }
 
   @override
@@ -121,11 +143,14 @@ class _$_MainState implements _MainState {
             (identical(other.inputName, inputName) ||
                 other.inputName == inputName) &&
             (identical(other.inputDescription, inputDescription) ||
-                other.inputDescription == inputDescription));
+                other.inputDescription == inputDescription) &&
+            (identical(other.testList, testList) ||
+                other.testList == testList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, inputName, inputDescription);
+  int get hashCode =>
+      Object.hash(runtimeType, inputName, inputDescription, testList);
 
   @JsonKey(ignore: true)
   @override
@@ -137,12 +162,15 @@ class _$_MainState implements _MainState {
 abstract class _MainState implements MainState {
   factory _MainState(
       {required final String inputName,
-      required final String inputDescription}) = _$_MainState;
+      required final String inputDescription,
+      required final AsyncValue<List<TestData>> testList}) = _$_MainState;
 
   @override
   String get inputName;
   @override
   String get inputDescription;
+  @override
+  AsyncValue<List<TestData>> get testList;
   @override
   @JsonKey(ignore: true)
   _$$_MainStateCopyWith<_$_MainState> get copyWith =>
