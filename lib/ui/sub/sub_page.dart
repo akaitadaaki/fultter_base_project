@@ -1,10 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../foundation/extension/async_snapshot.dart';
-import '../loading_state_view_model.dart';
 import '../theme/app_theme.dart';
 import 'sub_view_model.dart';
 
@@ -20,13 +17,7 @@ class SubPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(appThemeProvider);
 
-    final subViewModel = ref.watch(subViewModelProvider(id));
     final data = ref.watch(subViewModelProvider(id).select((value) => value.data));
-    final snapshot = useFuture(
-      useMemoized(() {
-        return ref.read(loadingStateProvider).whileLoading(subViewModel.getTestData);
-      }, [data]),
-    );
 
     return WillPopScope(
         onWillPop: () {
@@ -48,40 +39,47 @@ class SubPage extends HookConsumerWidget {
               title: const Text("サブページ"),
               centerTitle: true,
             ),
-            body: snapshot.isWaiting || data == null
-                ? const SizedBox()
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(color: theme.appColors.background),
-                        child: Stack(
-                          alignment: Alignment.centerLeft,
+            body: data.when(
+                loading: () => const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                error: (err, stack) => Center(child: Text('Error: $err')),
+                data: (testData) {
+                  return (testData == null)
+                      ? const Center(child: Text('TestData is Null'))
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Center(
-                                child: FittedBox(
-                                    fit: BoxFit.scaleDown,
-                                    child: Text(data.name, style: theme.textTheme.s20.bold().sp()))),
-                            const SizedBox(),
+                            Container(
+                              decoration: BoxDecoration(color: theme.appColors.background),
+                              child: Stack(
+                                alignment: Alignment.centerLeft,
+                                children: [
+                                  Center(
+                                      child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(testData.name, style: theme.textTheme.s20.bold().sp()))),
+                                  const SizedBox(),
+                                ],
+                              ),
+                            ),
+                            Divider(
+                              color: theme.appColors.border,
+                              thickness: 1,
+                              height: 0,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(color: theme.appColors.background),
+                              child: Stack(
+                                alignment: Alignment.centerLeft,
+                                children: [
+                                  Center(child: Text(testData.description, style: theme.textTheme.s20.bold().sp())),
+                                  const SizedBox(),
+                                ],
+                              ),
+                            ),
                           ],
-                        ),
-                      ),
-                      Divider(
-                        color: theme.appColors.border,
-                        thickness: 1,
-                        height: 0,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(color: theme.appColors.background),
-                        child: Stack(
-                          alignment: Alignment.centerLeft,
-                          children: [
-                            Center(child: Text(data.description, style: theme.textTheme.s20.bold().sp())),
-                            const SizedBox(),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )));
+                        );
+                })));
   }
 }

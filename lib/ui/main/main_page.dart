@@ -18,7 +18,7 @@ class MainPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(appThemeProvider);
 
-    final mainState = ref.watch(mainViewModelProvider);
+    final testList = ref.watch(mainViewModelProvider.select((value) => value.testList));
 
     FlutterNativeSplash.remove();
 
@@ -59,7 +59,10 @@ class MainPage extends HookConsumerWidget {
                       child: Text("Add", style: theme.textTheme.s12.bold().sp()),
                       onPressed: () {
                         if (_nameController.text.isNotEmpty) {
-                          ref.watch(mainViewModelProvider.notifier).save().then((_) => ref.refresh(testDataProvider));
+                          ref
+                              .watch(mainViewModelProvider.notifier)
+                              .save()
+                              .then((_) => ref.refresh(testDataListProvider));
                           _nameController.text = "";
                           _descriptionController.text = "";
                         }
@@ -71,7 +74,7 @@ class MainPage extends HookConsumerWidget {
             thickness: 1,
             height: 0,
           ),
-          mainState.testList.when(
+          testList.when(
               loading: () => const Center(
                     child: CircularProgressIndicator(),
                   ),

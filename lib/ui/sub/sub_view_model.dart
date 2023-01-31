@@ -1,24 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../data/model/test_data.dart';
 import '../../data/repository/test_data_repository.dart';
+import 'sub_state.dart';
 
 final subViewModelProvider =
-    ChangeNotifierProvider.autoDispose.family<SubViewModel, int>((ref, id) => SubViewModel(ref, id));
+    StateNotifierProvider.autoDispose.family<SubViewModel, SubState, int>((ref, id) => SubViewModel(ref, id));
+final testDataProvider =
+    FutureProvider.family<TestData?, int>((ref, id) async => ref.read(testDataRepositoryProvider).getTestDataById(id));
 
-class SubViewModel extends ChangeNotifier {
-  SubViewModel(this._red, this._id);
+class SubViewModel extends StateNotifier<SubState> {
+  SubViewModel(this._ref, id) : super(SubState(id: id, data: _ref.watch(testDataProvider(id))));
 
-  final Ref _red;
-  final int _id;
+  final Ref _ref;
 
-  late final TestDataReposiotory _testDataRepository = _red.read(testDataRepositoryProvider);
-
-  TestData? get data => _data;
-  TestData? _data;
-
-  Future<void> getTestData() async {
-    _testDataRepository.getTestDataById(_id).then((value) => _data = value).whenComplete(notifyListeners);
-  }
+  late final TestDataReposiotory _testDataRepository = _ref.read(testDataRepositoryProvider);
 }

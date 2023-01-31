@@ -5,12 +5,12 @@ import '../../data/repository/test_data_repository.dart';
 import 'main_state.dart';
 
 final mainViewModelProvider = StateNotifierProvider<MainViewModel, MainState>((ref) => MainViewModel(ref));
-final testDataProvider =
+final testDataListProvider =
     FutureProvider<List<TestData>>((ref) async => ref.read(testDataRepositoryProvider).getTestDataList());
 
 class MainViewModel extends StateNotifier<MainState> {
   MainViewModel(this._ref)
-      : super(MainState(inputName: "", inputDescription: "", testList: _ref.watch(testDataProvider)));
+      : super(MainState(inputName: "", inputDescription: "", testList: _ref.watch(testDataListProvider)));
 
   final Ref _ref;
 
