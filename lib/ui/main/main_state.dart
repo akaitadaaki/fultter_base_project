@@ -2,12 +2,12 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'test_state.freezed.dart';
+part 'main_state.freezed.dart';
 
 @freezed
-class TestState with _$TestState {
-  factory TestState({
+class MainState with _$MainState {
+  factory MainState({
     required String inputName,
     required String inputDescription,
-  }) = _TestState;
+  }) = _MainState;
 }

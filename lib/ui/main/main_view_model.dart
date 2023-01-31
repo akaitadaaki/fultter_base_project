@@ -1,15 +1,15 @@
-import 'package:fultter_base_project/data/model/test_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../data/model/test_data.dart';
 import '../../data/repository/test_data_repository.dart';
+import 'main_state.dart';
 
-final mainViewModelProvider = StateNotifierProvider<MainViewModel, TestState>((ref) => MainViewModel(ref));
+final mainViewModelProvider = StateNotifierProvider<MainViewModel, MainState>((ref) => MainViewModel(ref));
 final testDataProvider =
     FutureProvider<List<TestData>>((ref) async => ref.read(testDataRepositoryProvider).getTestDataList());
 
-class MainViewModel extends StateNotifier<TestState> {
-  MainViewModel(this._ref) : super(TestState(inputName: "", inputDescription: ""));
+class MainViewModel extends StateNotifier<MainState> {
+  MainViewModel(this._ref) : super(MainState(inputName: "", inputDescription: ""));
 
   final Ref _ref;
 
@@ -23,7 +23,7 @@ class MainViewModel extends StateNotifier<TestState> {
       int lastId = await _testDataRepository.getLastId();
       _testDataRepository.saveTestData(TestData(
           id: ++lastId, name: state.inputName, description: state.inputDescription, lastUpdate: DateTime.now()));
-      state = TestState(inputName: "", inputDescription: "");
+      state = MainState(inputName: "", inputDescription: "");
     }
   }
 }
