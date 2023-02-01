@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../data/model/test_data.dart';
 
-part 'sub_state.freezed.dart';
+part 'generated/sub_state.freezed.dart';
 
 @freezed
 class SubState with _$SubState {

@@ -3,8 +3,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../foundation/utils/date_time_converter.dart';
 
-part 'test_data.freezed.dart';
-part 'test_data.g.dart';
+part 'generated/test_data.freezed.dart';
+part 'generated/test_data.g.dart';
 
 @freezed
 class TestData with _$TestData {
