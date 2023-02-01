@@ -1,28 +1,28 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../data/model/test_data.dart';
-import '../../data/repository/test_data_repository.dart';
+import '../../data/model/sample_data.dart';
+import '../../data/repository/sample_data_repository.dart';
 import 'main_state.dart';
 
 final mainViewModelProvider = StateNotifierProvider<MainViewModel, MainState>((ref) => MainViewModel(ref));
-final testDataListProvider =
-    FutureProvider<List<TestData>>((ref) async => ref.read(testDataRepositoryProvider).getTestDataList());
+final sampleDataListProvider =
+    FutureProvider<List<SampleData>>((ref) async => ref.read(sampleDataRepositoryProvider).getSampleDataList());
 
 class MainViewModel extends StateNotifier<MainState> {
   MainViewModel(this._ref)
-      : super(MainState(inputName: "", inputDescription: "", testList: _ref.watch(testDataListProvider)));
+      : super(MainState(inputName: "", inputDescription: "", sampleList: _ref.watch(sampleDataListProvider)));
 
   final Ref _ref;
 
-  late final TestDataReposiotory _testDataRepository = _ref.read(testDataRepositoryProvider);
+  late final SampleDataReposiotory _sampleDataRepository = _ref.read(sampleDataRepositoryProvider);
 
   void setImputName(String inputName) => state = state.copyWith(inputName: inputName);
   void setImputDescription(String inputDescription) => state = state.copyWith(inputDescription: inputDescription);
 
   Future<void> save() async {
     if (state.inputName.isNotEmpty) {
-      int lastId = await _testDataRepository.getLastId();
-      _testDataRepository.saveTestData(TestData(
+      int lastId = await _sampleDataRepository.getLastId();
+      _sampleDataRepository.saveSampleData(SampleData(
           id: ++lastId, name: state.inputName, description: state.inputDescription, lastUpdate: DateTime.now()));
       state = state.copyWith(inputName: "", inputDescription: "");
     }

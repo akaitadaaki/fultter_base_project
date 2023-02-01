@@ -1,11 +1,11 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../../foundation/extension/map.dart';
-import '../model/test_data.dart';
+import '../model/sample_data.dart';
 import 'app_database.dart';
 
-class TestDataDatabase extends AppDatabase {
-  static const String _tableName = 'test_data';
+class SampleDataDatabase extends AppDatabase {
+  static const String _tableName = 'sample_data';
   static const String _columnId = 'id';
   static const String _columnName = 'name';
   static const String _columnDescription = 'description';
@@ -27,7 +27,7 @@ class TestDataDatabase extends AppDatabase {
     "lastUpdate": _columnLastUpdate,
   };
 
-  Future<List<TestData>> getTestDataList() async {
+  Future<List<SampleData>> getSampleDataList() async {
     final db = await database;
     final maps = await db.query(
       _tableName,
@@ -36,40 +36,40 @@ class TestDataDatabase extends AppDatabase {
 
     if (maps.isEmpty) return [];
 
-    return maps.map((map) => TestData.fromJson(map.restoreKey(changeMap))).toList();
+    return maps.map((map) => SampleData.fromJson(map.restoreKey(changeMap))).toList();
   }
 
-  Future<TestData?> getTestDataById(int id) async {
+  Future<SampleData?> getSampleDataById(int id) async {
     final db = await database;
     final maps = await db.query(_tableName, where: "$_columnId = ?", whereArgs: [id]);
 
     if (maps.isEmpty) return null;
 
-    return maps.map((map) => TestData.fromJson(map.restoreKey(changeMap))).toList()[0];
+    return maps.map((map) => SampleData.fromJson(map.restoreKey(changeMap))).toList()[0];
   }
 
-  Future<TestData> insert(TestData testData) async {
+  Future<SampleData> insert(SampleData sampleData) async {
     final db = await database;
 
     final id = await db.insert(
       _tableName,
-      testData.toJson().changeKey(changeMap),
+      sampleData.toJson().changeKey(changeMap),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
-    return testData.copyWith(
+    return sampleData.copyWith(
       id: id,
     );
   }
 
-  Future update(TestData testData) async {
+  Future update(SampleData sampleData) async {
     final db = await database;
 
     return await db.update(
       _tableName,
-      testData.toJson().changeKey(changeMap),
+      sampleData.toJson().changeKey(changeMap),
       where: '$_columnId = ?',
-      whereArgs: [testData.id],
+      whereArgs: [sampleData.id],
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }

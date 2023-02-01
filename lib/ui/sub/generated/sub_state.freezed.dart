@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SubState {
   int get id => throw _privateConstructorUsedError;
-  AsyncValue<TestData?> get data => throw _privateConstructorUsedError;
+  AsyncValue<SampleData?> get data => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SubStateCopyWith<SubState> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $SubStateCopyWith<$Res> {
   factory $SubStateCopyWith(SubState value, $Res Function(SubState) then) =
       _$SubStateCopyWithImpl<$Res, SubState>;
   @useResult
-  $Res call({int id, AsyncValue<TestData?> data});
+  $Res call({int id, AsyncValue<SampleData?> data});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$SubStateCopyWithImpl<$Res, $Val extends SubState>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<TestData?>,
+              as AsyncValue<SampleData?>,
     ) as $Val);
   }
 }
@@ -68,7 +68,7 @@ abstract class _$$_SubStateCopyWith<$Res> implements $SubStateCopyWith<$Res> {
       __$$_SubStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, AsyncValue<TestData?> data});
+  $Res call({int id, AsyncValue<SampleData?> data});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class __$$_SubStateCopyWithImpl<$Res>
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<TestData?>,
+              as AsyncValue<SampleData?>,
     ));
   }
 }
@@ -106,7 +106,7 @@ class _$_SubState implements _SubState {
   @override
   final int id;
   @override
-  final AsyncValue<TestData?> data;
+  final AsyncValue<SampleData?> data;
 
   @override
   String toString() {
@@ -135,12 +135,12 @@ class _$_SubState implements _SubState {
 abstract class _SubState implements SubState {
   factory _SubState(
       {required final int id,
-      required final AsyncValue<TestData?> data}) = _$_SubState;
+      required final AsyncValue<SampleData?> data}) = _$_SubState;
 
   @override
   int get id;
   @override
-  AsyncValue<TestData?> get data;
+  AsyncValue<SampleData?> get data;
   @override
   @JsonKey(ignore: true)
   _$$_SubStateCopyWith<_$_SubState> get copyWith =>

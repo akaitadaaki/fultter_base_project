@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of '../test_data.dart';
+part of '../sample_data.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TestData _$TestDataFromJson(Map<String, dynamic> json) {
-  return _TestData.fromJson(json);
+SampleData _$SampleDataFromJson(Map<String, dynamic> json) {
+  return _SampleData.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TestData {
+mixin _$SampleData {
   @JsonKey(name: 'dataId')
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'dataName')
@@ -30,14 +30,15 @@ mixin _$TestData {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TestDataCopyWith<TestData> get copyWith =>
+  $SampleDataCopyWith<SampleData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TestDataCopyWith<$Res> {
-  factory $TestDataCopyWith(TestData value, $Res Function(TestData) then) =
-      _$TestDataCopyWithImpl<$Res, TestData>;
+abstract class $SampleDataCopyWith<$Res> {
+  factory $SampleDataCopyWith(
+          SampleData value, $Res Function(SampleData) then) =
+      _$SampleDataCopyWithImpl<$Res, SampleData>;
   @useResult
   $Res call(
       {@JsonKey(name: 'dataId') int id,
@@ -47,9 +48,9 @@ abstract class $TestDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TestDataCopyWithImpl<$Res, $Val extends TestData>
-    implements $TestDataCopyWith<$Res> {
-  _$TestDataCopyWithImpl(this._value, this._then);
+class _$SampleDataCopyWithImpl<$Res, $Val extends SampleData>
+    implements $SampleDataCopyWith<$Res> {
+  _$SampleDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -86,10 +87,11 @@ class _$TestDataCopyWithImpl<$Res, $Val extends TestData>
 }
 
 /// @nodoc
-abstract class _$$_TestDataCopyWith<$Res> implements $TestDataCopyWith<$Res> {
-  factory _$$_TestDataCopyWith(
-          _$_TestData value, $Res Function(_$_TestData) then) =
-      __$$_TestDataCopyWithImpl<$Res>;
+abstract class _$$_SampleDataCopyWith<$Res>
+    implements $SampleDataCopyWith<$Res> {
+  factory _$$_SampleDataCopyWith(
+          _$_SampleData value, $Res Function(_$_SampleData) then) =
+      __$$_SampleDataCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -100,11 +102,11 @@ abstract class _$$_TestDataCopyWith<$Res> implements $TestDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TestDataCopyWithImpl<$Res>
-    extends _$TestDataCopyWithImpl<$Res, _$_TestData>
-    implements _$$_TestDataCopyWith<$Res> {
-  __$$_TestDataCopyWithImpl(
-      _$_TestData _value, $Res Function(_$_TestData) _then)
+class __$$_SampleDataCopyWithImpl<$Res>
+    extends _$SampleDataCopyWithImpl<$Res, _$_SampleData>
+    implements _$$_SampleDataCopyWith<$Res> {
+  __$$_SampleDataCopyWithImpl(
+      _$_SampleData _value, $Res Function(_$_SampleData) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +117,7 @@ class __$$_TestDataCopyWithImpl<$Res>
     Object? description = null,
     Object? lastUpdate = null,
   }) {
-    return _then(_$_TestData(
+    return _then(_$_SampleData(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -138,15 +140,15 @@ class __$$_TestDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TestData implements _TestData {
-  _$_TestData(
+class _$_SampleData implements _SampleData {
+  _$_SampleData(
       {@JsonKey(name: 'dataId') required this.id,
       @JsonKey(name: 'dataName') required this.name,
       required this.description,
       @DateTimeConverter() required this.lastUpdate});
 
-  factory _$_TestData.fromJson(Map<String, dynamic> json) =>
-      _$$_TestDataFromJson(json);
+  factory _$_SampleData.fromJson(Map<String, dynamic> json) =>
+      _$$_SampleDataFromJson(json);
 
   @override
   @JsonKey(name: 'dataId')
@@ -162,14 +164,14 @@ class _$_TestData implements _TestData {
 
   @override
   String toString() {
-    return 'TestData(id: $id, name: $name, description: $description, lastUpdate: $lastUpdate)';
+    return 'SampleData(id: $id, name: $name, description: $description, lastUpdate: $lastUpdate)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TestData &&
+            other is _$_SampleData &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
@@ -186,25 +188,26 @@ class _$_TestData implements _TestData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TestDataCopyWith<_$_TestData> get copyWith =>
-      __$$_TestDataCopyWithImpl<_$_TestData>(this, _$identity);
+  _$$_SampleDataCopyWith<_$_SampleData> get copyWith =>
+      __$$_SampleDataCopyWithImpl<_$_SampleData>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TestDataToJson(
+    return _$$_SampleDataToJson(
       this,
     );
   }
 }
 
-abstract class _TestData implements TestData {
-  factory _TestData(
+abstract class _SampleData implements SampleData {
+  factory _SampleData(
       {@JsonKey(name: 'dataId') required final int id,
       @JsonKey(name: 'dataName') required final String name,
       required final String description,
-      @DateTimeConverter() required final DateTime lastUpdate}) = _$_TestData;
+      @DateTimeConverter() required final DateTime lastUpdate}) = _$_SampleData;
 
-  factory _TestData.fromJson(Map<String, dynamic> json) = _$_TestData.fromJson;
+  factory _SampleData.fromJson(Map<String, dynamic> json) =
+      _$_SampleData.fromJson;
 
   @override
   @JsonKey(name: 'dataId')
@@ -219,6 +222,6 @@ abstract class _TestData implements TestData {
   DateTime get lastUpdate;
   @override
   @JsonKey(ignore: true)
-  _$$_TestDataCopyWith<_$_TestData> get copyWith =>
+  _$$_SampleDataCopyWith<_$_SampleData> get copyWith =>
       throw _privateConstructorUsedError;
 }

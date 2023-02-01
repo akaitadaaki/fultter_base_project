@@ -3,7 +3,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../data/model/test_data.dart';
+import '../../data/model/sample_data.dart';
 
 part 'generated/sub_state.freezed.dart';
 
@@ -11,6 +11,6 @@ part 'generated/sub_state.freezed.dart';
 class SubState with _$SubState {
   factory SubState({
     required int id,
-    required AsyncValue<TestData?> data,
+    required AsyncValue<SampleData?> data,
   }) = _SubState;
 }

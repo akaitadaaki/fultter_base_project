@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'test_data_database.dart';
+import 'sample_data_database.dart';
 
 abstract class TableInfo {
   String getTableName();
@@ -12,7 +12,7 @@ abstract class TableInfo {
 abstract class AppDatabase {
   late Database _database;
   final tableInfo = {
-    TestDataDatabase.tableName: TestDataDatabase.columns,
+    SampleDataDatabase.tableName: SampleDataDatabase.columns,
   };
 
   Future<Database> get database async {

@@ -3,7 +3,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../data/model/test_data.dart';
+import '../../data/model/sample_data.dart';
 
 part 'generated/main_state.freezed.dart';
 
@@ -12,6 +12,6 @@ class MainState with _$MainState {
   factory MainState({
     required String inputName,
     required String inputDescription,
-    required AsyncValue<List<TestData>> testList,
+    required AsyncValue<List<SampleData>> sampleList,
   }) = _MainState;
 }

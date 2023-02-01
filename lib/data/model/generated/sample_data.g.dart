@@ -1,16 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../test_data.dart';
+part of '../sample_data.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TestData _$$_TestDataFromJson(Map<String, dynamic> json) => $checkedCreate(
-      r'_$_TestData',
+_$_SampleData _$$_SampleDataFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_SampleData',
       json,
       ($checkedConvert) {
-        final val = _$_TestData(
+        final val = _$_SampleData(
           id: $checkedConvert('dataId', (v) => v as int),
           name: $checkedConvert('dataName', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
@@ -26,7 +27,7 @@ _$_TestData _$$_TestDataFromJson(Map<String, dynamic> json) => $checkedCreate(
       },
     );
 
-Map<String, dynamic> _$$_TestDataToJson(_$_TestData instance) =>
+Map<String, dynamic> _$$_SampleDataToJson(_$_SampleData instance) =>
     <String, dynamic>{
       'dataId': instance.id,
       'dataName': instance.name,

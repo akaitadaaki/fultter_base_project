@@ -18,7 +18,7 @@ class MainPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(appThemeProvider);
 
-    final testList = ref.watch(mainViewModelProvider.select((value) => value.testList));
+    final testList = ref.watch(mainViewModelProvider.select((value) => value.sampleList));
 
     FlutterNativeSplash.remove();
 
@@ -62,7 +62,7 @@ class MainPage extends HookConsumerWidget {
                           ref
                               .watch(mainViewModelProvider.notifier)
                               .save()
-                              .then((_) => ref.refresh(testDataListProvider));
+                              .then((_) => ref.refresh(sampleDataListProvider));
                           _nameController.text = "";
                           _descriptionController.text = "";
                         }
