@@ -46,12 +46,12 @@ class MainPage extends HookConsumerWidget {
                 Expanded(
                     child: TextField(
                   controller: _nameController,
-                  onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setImputName(value),
+                  onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputName(value),
                 )),
                 Expanded(
                     child: TextField(
                   controller: _descriptionController,
-                  onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setImputDescription(value),
+                  onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputDescription(value),
                 )),
                 SizedBox(
                     width: 60.w,
