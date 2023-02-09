@@ -10,8 +10,6 @@ part 'generated/main_state.freezed.dart';
 @freezed
 class MainState with _$MainState {
   factory MainState({
-    required String inputName,
-    required String inputDescription,
     required AsyncValue<List<SampleData>> sampleList,
   }) = _MainState;
 }

@@ -16,8 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MainState {
-  String get inputName => throw _privateConstructorUsedError;
-  String get inputDescription => throw _privateConstructorUsedError;
   AsyncValue<List<SampleData>> get sampleList =>
       throw _privateConstructorUsedError;
 
@@ -31,10 +29,7 @@ abstract class $MainStateCopyWith<$Res> {
   factory $MainStateCopyWith(MainState value, $Res Function(MainState) then) =
       _$MainStateCopyWithImpl<$Res, MainState>;
   @useResult
-  $Res call(
-      {String inputName,
-      String inputDescription,
-      AsyncValue<List<SampleData>> sampleList});
+  $Res call({AsyncValue<List<SampleData>> sampleList});
 }
 
 /// @nodoc
@@ -50,19 +45,9 @@ class _$MainStateCopyWithImpl<$Res, $Val extends MainState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? inputName = null,
-    Object? inputDescription = null,
     Object? sampleList = null,
   }) {
     return _then(_value.copyWith(
-      inputName: null == inputName
-          ? _value.inputName
-          : inputName // ignore: cast_nullable_to_non_nullable
-              as String,
-      inputDescription: null == inputDescription
-          ? _value.inputDescription
-          : inputDescription // ignore: cast_nullable_to_non_nullable
-              as String,
       sampleList: null == sampleList
           ? _value.sampleList
           : sampleList // ignore: cast_nullable_to_non_nullable
@@ -78,10 +63,7 @@ abstract class _$$_MainStateCopyWith<$Res> implements $MainStateCopyWith<$Res> {
       __$$_MainStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String inputName,
-      String inputDescription,
-      AsyncValue<List<SampleData>> sampleList});
+  $Res call({AsyncValue<List<SampleData>> sampleList});
 }
 
 /// @nodoc
@@ -95,19 +77,9 @@ class __$$_MainStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? inputName = null,
-    Object? inputDescription = null,
     Object? sampleList = null,
   }) {
     return _then(_$_MainState(
-      inputName: null == inputName
-          ? _value.inputName
-          : inputName // ignore: cast_nullable_to_non_nullable
-              as String,
-      inputDescription: null == inputDescription
-          ? _value.inputDescription
-          : inputDescription // ignore: cast_nullable_to_non_nullable
-              as String,
       sampleList: null == sampleList
           ? _value.sampleList
           : sampleList // ignore: cast_nullable_to_non_nullable
@@ -119,21 +91,14 @@ class __$$_MainStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MainState implements _MainState {
-  _$_MainState(
-      {required this.inputName,
-      required this.inputDescription,
-      required this.sampleList});
+  _$_MainState({required this.sampleList});
 
-  @override
-  final String inputName;
-  @override
-  final String inputDescription;
   @override
   final AsyncValue<List<SampleData>> sampleList;
 
   @override
   String toString() {
-    return 'MainState(inputName: $inputName, inputDescription: $inputDescription, sampleList: $sampleList)';
+    return 'MainState(sampleList: $sampleList)';
   }
 
   @override
@@ -141,17 +106,12 @@ class _$_MainState implements _MainState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MainState &&
-            (identical(other.inputName, inputName) ||
-                other.inputName == inputName) &&
-            (identical(other.inputDescription, inputDescription) ||
-                other.inputDescription == inputDescription) &&
             (identical(other.sampleList, sampleList) ||
                 other.sampleList == sampleList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, inputName, inputDescription, sampleList);
+  int get hashCode => Object.hash(runtimeType, sampleList);
 
   @JsonKey(ignore: true)
   @override
@@ -161,15 +121,9 @@ class _$_MainState implements _MainState {
 }
 
 abstract class _MainState implements MainState {
-  factory _MainState(
-      {required final String inputName,
-      required final String inputDescription,
-      required final AsyncValue<List<SampleData>> sampleList}) = _$_MainState;
+  factory _MainState({required final AsyncValue<List<SampleData>> sampleList}) =
+      _$_MainState;
 
-  @override
-  String get inputName;
-  @override
-  String get inputDescription;
   @override
   AsyncValue<List<SampleData>> get sampleList;
   @override

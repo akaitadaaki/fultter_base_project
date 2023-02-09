@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/model/sample_data.dart';
 import '../theme/app_theme.dart';
 import 'main_view_model.dart';
 
@@ -18,6 +19,7 @@ class MainPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(appThemeProvider);
 
+    final viewModel = ref.watch(mainViewModelProvider.notifier);
     final testList = ref.watch(mainViewModelProvider.select((value) => value.sampleList));
 
     FlutterNativeSplash.remove();
@@ -46,22 +48,34 @@ class MainPage extends HookConsumerWidget {
                 Expanded(
                     child: TextField(
                   controller: _nameController,
-                  onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputName(value),
+                  // onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputName(value),
                 )),
                 Expanded(
                     child: TextField(
                   controller: _descriptionController,
-                  onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputDescription(value),
+                  // onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputDescription(value),
                 )),
                 SizedBox(
                     width: 60.w,
                     child: ElevatedButton(
                       child: Text("Add", style: theme.textTheme.s12.bold().sp()),
-                      onPressed: () {
+                      onPressed: () async {
+                        print(_nameController.text);
+                        print(_descriptionController.text);
                         if (_nameController.text.isNotEmpty) {
-                          ref
-                              .watch(mainViewModelProvider.notifier)
-                              .save()
+                          var lastId = await viewModel.getLastId();
+                          //                     viewModel.setInputName(_nameController.text);
+                          //                     viewModel.setInputDescription(_descriptionController.text);
+                          // int lastId = await _sampleDataRepository.getLastId();
+                          // _sampleDataRepository.saveSampleData(SampleData(
+                          //     id: ++lastId, name: _nameController.text, description: state.inputDescription, lastUpdate: DateTime.now()));
+
+                          viewModel
+                              .save(SampleData(
+                                  id: ++lastId,
+                                  name: _nameController.text,
+                                  description: _descriptionController.text,
+                                  lastUpdate: DateTime.now()))
                               .then((_) => ref.refresh(sampleDataListProvider));
                           _nameController.text = "";
                           _descriptionController.text = "";
