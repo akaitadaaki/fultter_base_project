@@ -16,16 +16,7 @@ class MainViewModel extends StateNotifier<MainState> {
 
   late final SampleDataReposiotory _sampleDataRepository = _ref.watch(sampleDataRepositoryProvider);
 
-  // void setInputName(String inputName) => state = state.copyWith(inputName: inputName);
-  // void setInputDescription(String inputDescription) => state = state.copyWith(inputDescription: inputDescription);
-
   Future<int> getLastId() async => await _sampleDataRepository.getLastId();
 
-  Future<void> save(SampleData sampleData) async {
-    // if (state.inputName.isNotEmpty) {
-    // int lastId = await _sampleDataRepository.getLastId();
-    _sampleDataRepository.saveSampleData(sampleData);
-    // state = state.copyWith(inputName: "", inputDescription: "");
-    // }
-  }
+  Future<void> save(SampleData sampleData) async => _sampleDataRepository.saveSampleData(sampleData);
 }
