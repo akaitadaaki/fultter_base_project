@@ -24,7 +24,7 @@ class SampleDataDatabase extends AppDatabase {
     };
   }
 
-  final Map<String, String> changeMap = {
+  final Map<String, String> _changeMap = {
     "dataId": _columnId,
     "dataName": _columnName,
     // "lastUpdate": _columnLastUpdate,
@@ -39,7 +39,7 @@ class SampleDataDatabase extends AppDatabase {
 
     if (maps.isEmpty) return [];
 
-    return maps.map((map) => SampleData.fromJson(map.restoreKey(changeMap))).toList();
+    return maps.map((map) => SampleData.fromJson(map.restoreKey(_changeMap))).toList();
   }
 
   Future<SampleData?> getSampleDataById(int id) async {
@@ -48,7 +48,7 @@ class SampleDataDatabase extends AppDatabase {
 
     if (maps.isEmpty) return null;
 
-    return maps.map((map) => SampleData.fromJson(map.restoreKey(changeMap))).toList()[0];
+    return maps.map((map) => SampleData.fromJson(map.restoreKey(_changeMap))).toList()[0];
   }
 
   Future<SampleData> insert(SampleData sampleData) async {
@@ -56,7 +56,7 @@ class SampleDataDatabase extends AppDatabase {
 
     final id = await db.insert(
       _tableName,
-      sampleData.toJson().changeKey(changeMap),
+      sampleData.toJson().changeKey(_changeMap),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
 
@@ -70,7 +70,7 @@ class SampleDataDatabase extends AppDatabase {
 
     return await db.update(
       _tableName,
-      sampleData.toJson().changeKey(changeMap),
+      sampleData.toJson().changeKey(_changeMap),
       where: '$_columnId = ?',
       whereArgs: [sampleData.id],
       conflictAlgorithm: ConflictAlgorithm.replace,
