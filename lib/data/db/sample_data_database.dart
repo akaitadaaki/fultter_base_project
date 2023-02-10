@@ -1,8 +1,11 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../foundation/extension/map.dart';
 import '../model/sample_data.dart';
 import 'app_database.dart';
+
+final sampleDatabaseProvider = Provider((ref) => SampleDataDatabase());
 
 class SampleDataDatabase extends AppDatabase {
   static const String _tableName = 'sample_data';
