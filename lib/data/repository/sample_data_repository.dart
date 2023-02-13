@@ -28,8 +28,8 @@ class SampleDataReposiotoryImpl implements SampleDataReposiotory {
   }
 
   @override
-  Future<void> saveSampleData(SampleData data) async {
-    _db.insert(data);
+  Future<SampleData> saveSampleData(SampleData data) async {
+    return _db.insert(data);
   }
 
   @override
