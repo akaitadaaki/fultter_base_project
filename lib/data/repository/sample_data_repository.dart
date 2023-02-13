@@ -2,7 +2,7 @@ import 'package:fultter_base_project/data/db/sample_data_database.dart';
 import 'package:fultter_base_project/data/model/sample_data.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final sampleDataRepositoryProvider = Provider((ref) => SampleDataReposiotoryImpl(ref));
+final sampleDataRepositoryProvider = Provider((ref) => SampleDataReposiotoryImpl(ref.watch(sampleDatabaseProvider)));
 
 abstract class SampleDataReposiotory {
   Future<List<SampleData>> getSampleDataList();
@@ -12,10 +12,9 @@ abstract class SampleDataReposiotory {
 }
 
 class SampleDataReposiotoryImpl implements SampleDataReposiotory {
-  SampleDataReposiotoryImpl(this._ref);
+  SampleDataReposiotoryImpl(this._db);
 
-  final Ref _ref;
-  late final SampleDataDatabase _db = _ref.watch(sampleDatabaseProvider);
+  final SampleDataDatabase _db;
 
   @override
   Future<SampleData?> getSampleDataById(int id) async {
