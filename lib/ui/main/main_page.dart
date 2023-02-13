@@ -48,28 +48,18 @@ class MainPage extends HookConsumerWidget {
                 Expanded(
                     child: TextField(
                   controller: _nameController,
-                  // onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputName(value),
                 )),
                 Expanded(
                     child: TextField(
                   controller: _descriptionController,
-                  // onChanged: (value) => ref.watch(mainViewModelProvider.notifier).setInputDescription(value),
                 )),
                 SizedBox(
                     width: 60.w,
                     child: ElevatedButton(
                       child: Text("Add", style: theme.textTheme.s12.bold().sp()),
                       onPressed: () async {
-                        print(_nameController.text);
-                        print(_descriptionController.text);
                         if (_nameController.text.isNotEmpty) {
                           var lastId = await viewModel.getLastId();
-                          //                     viewModel.setInputName(_nameController.text);
-                          //                     viewModel.setInputDescription(_descriptionController.text);
-                          // int lastId = await _sampleDataRepository.getLastId();
-                          // _sampleDataRepository.saveSampleData(SampleData(
-                          //     id: ++lastId, name: _nameController.text, description: state.inputDescription, lastUpdate: DateTime.now()));
-
                           viewModel
                               .save(SampleData(
                                   id: ++lastId,
