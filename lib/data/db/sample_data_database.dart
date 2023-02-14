@@ -6,6 +6,7 @@ import '../model/sample_data.dart';
 import 'app_database.dart';
 
 final sampleDatabaseProvider = Provider((ref) => SampleDataDatabase(ref.watch(testDatabasePathProvider)));
+// Unit テスト用DBのパス指定（通常時は利用しない）
 final testDatabasePathProvider = StateProvider<String?>((ref) => null);
 
 class SampleDataDatabase extends AppDatabase {
