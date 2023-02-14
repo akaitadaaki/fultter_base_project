@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'sample_data_database.dart';
 
@@ -9,7 +12,11 @@ abstract class TableInfo {
   Map<String, String> getColumn();
 }
 
+const String databaseFileName = "sample_database.db";
+
 abstract class AppDatabase {
+  AppDatabase(this._testPath);
+  final String? _testPath;
   late Database _database;
   final tableInfo = {
     SampleDataDatabase.tableName: SampleDataDatabase.columns,
@@ -21,14 +28,27 @@ abstract class AppDatabase {
   }
 
   Future<Database> _initDB() async {
-    String path = join(await getDatabasesPath(), 'kfps.db');
+    const version = 1;
+    if (_testPath == null) {
+      String path = join(await getDatabasesPath(), databaseFileName);
 
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: _createTable,
-      onUpgrade: _upgradeTable,
-    );
+      return await openDatabase(
+        path,
+        version: version,
+        onCreate: _createTable,
+        onUpgrade: _upgradeTable,
+      );
+    } else {
+      // テスト用
+      Directory(_testPath!).create();
+      sqfliteFfiInit();
+      final options = OpenDatabaseOptions(
+        version: version,
+        onCreate: _createTable,
+        onUpgrade: _upgradeTable,
+      );
+      return await databaseFactoryFfi.openDatabase(_testPath!, options: options);
+    }
   }
 
   Future<void> _createTable(Database db, int version) async {

@@ -5,9 +5,11 @@ import '../../foundation/extension/map.dart';
 import '../model/sample_data.dart';
 import 'app_database.dart';
 
-final sampleDatabaseProvider = Provider((ref) => SampleDataDatabase());
+final sampleDatabaseProvider = Provider((ref) => SampleDataDatabase(ref.watch(testDatabasePathProvider)));
+final testDatabasePathProvider = StateProvider<String?>((ref) => null);
 
 class SampleDataDatabase extends AppDatabase {
+  SampleDataDatabase(testPath) : super(testPath);
   static const String _tableName = 'sample_data';
   static const String _columnId = 'id';
   static const String _columnName = 'name';
