@@ -1,9 +1,9 @@
 extension ToJsonMapExt on Map<String, dynamic> {
-  Map<String, dynamic> changeKey(Map<String, String> changeMap, {Map<String, String>? checkColumns}) {
+  Map<String, dynamic> changeKey(Map<String, String> changeMap, {List<String>? checkColumns}) {
     Map<String, dynamic> newMap = <String, dynamic>{};
     for (var key in keys) {
       final newKey = changeMap.containsKey(key) ? changeMap[key]! : key;
-      if (checkColumns == null || checkColumns.containsKey(newKey)) {
+      if (checkColumns == null || checkColumns.contains(newKey)) {
         newMap[newKey] = this[key];
       }
     }
