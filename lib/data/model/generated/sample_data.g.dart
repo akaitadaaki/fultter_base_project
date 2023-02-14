@@ -15,16 +15,12 @@ _$_SampleData _$$_SampleDataFromJson(Map<String, dynamic> json) =>
           id: $checkedConvert('dataId', (v) => v as int),
           name: $checkedConvert('dataName', (v) => v as String),
           description: $checkedConvert('description', (v) => v as String),
-          lastUpdate: $checkedConvert('last_update',
+          lastUpdate: $checkedConvert('lastUpdate',
               (v) => const DateTimeConverter().fromJson(v as String)),
         );
         return val;
       },
-      fieldKeyMap: const {
-        'id': 'dataId',
-        'name': 'dataName',
-        'lastUpdate': 'last_update'
-      },
+      fieldKeyMap: const {'id': 'dataId', 'name': 'dataName'},
     );
 
 Map<String, dynamic> _$$_SampleDataToJson(_$_SampleData instance) =>
@@ -32,5 +28,5 @@ Map<String, dynamic> _$$_SampleDataToJson(_$_SampleData instance) =>
       'dataId': instance.id,
       'dataName': instance.name,
       'description': instance.description,
-      'last_update': const DateTimeConverter().toJson(instance.lastUpdate),
+      'lastUpdate': const DateTimeConverter().toJson(instance.lastUpdate),
     };

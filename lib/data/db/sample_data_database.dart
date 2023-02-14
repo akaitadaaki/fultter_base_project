@@ -30,7 +30,7 @@ class SampleDataDatabase extends AppDatabase {
   final Map<String, String> _changeMap = {
     "dataId": _columnId,
     "dataName": _columnName,
-    // "lastUpdate": _columnLastUpdate,
+    "lastUpdate": _columnLastUpdate,
   };
 
   Future<List<SampleData>> getSampleDataList() async {
