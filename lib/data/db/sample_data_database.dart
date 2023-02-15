@@ -17,15 +17,13 @@ class SampleDataDatabase extends AppDatabase {
   static const String _columnDescription = 'description';
   static const String _columnLastUpdate = 'last_update';
 
-  static get tableName => _tableName;
-  static get columns {
-    return {
-      _columnId: "INTEGER PRIMARY KEY",
-      _columnName: "TEXT",
-      _columnDescription: "TEXT",
-      _columnLastUpdate: "INTEGER",
-    };
-  }
+  static String get tableName => _tableName;
+  static Map<String, String> get columns => {
+        _columnId: "INTEGER PRIMARY KEY",
+        _columnName: "TEXT",
+        _columnDescription: "TEXT",
+        _columnLastUpdate: "INTEGER",
+      };
 
   final Map<String, String> _changeMap = {
     "dataId": _columnId,
